@@ -27,6 +27,9 @@ db.connect((err) => {
     console.log("Connected to MySQL database");
 
 });
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
+});
 app.get('/topics/:userId', (req, res) => {
     const userId = req.params.userId; // Retrieve userId from URL parameter
     const query = 'SELECT * FROM topics WHERE user_id = ?'; // Filter by user_id column
